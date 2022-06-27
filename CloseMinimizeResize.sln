@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32602.291
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloseMinimizeResize", "CloseMinimizeResize\CloseMinimizeResize.csproj", "{E81D0842-27A4-4B07-BB9E-B9CA41B84837}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E81D0842-27A4-4B07-BB9E-B9CA41B84837}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E81D0842-27A4-4B07-BB9E-B9CA41B84837}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E81D0842-27A4-4B07-BB9E-B9CA41B84837}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E81D0842-27A4-4B07-BB9E-B9CA41B84837}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4B851B54-BE78-4E65-B236-FC67D72D6574}
+	EndGlobalSection
+EndGlobal
