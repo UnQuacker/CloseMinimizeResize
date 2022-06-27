@@ -41,7 +41,6 @@ namespace CloseMinimizeResize
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            WindowStyle = WindowStyle.SingleBorderWindow;
             this.Close();
         }
 
