@@ -27,6 +27,7 @@ namespace CloseMinimizeResize
         {
             InitializeComponent();
             Loaded += Window_Loaded;
+            Activated += MainWindow_OnActivated;
         }
 
         bool AlreadyFaded;
@@ -35,16 +36,37 @@ namespace CloseMinimizeResize
             this.MouseDown += delegate { DragMove(); };
             AlreadyFaded = false;
         }
+        private void MainWindow_OnActivated(object sender, EventArgs e)
+        {
+            //change the WindowStyle back to None, but only after the Window has been activated
+            Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new Action(() => WindowStyle = WindowStyle.None));
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //WindowStyle = WindowStyle.SingleBorderWindow;
-            if (!AlreadyFaded)
+
+            //if (!AlreadyFaded)
+            //{
+            //    AlreadyFaded = true;
+            //    var anim = new DoubleAnimation(0, (Duration)TimeSpan.FromSeconds(1));
+            //    anim.Completed += new EventHandler(anim_Completed);
+            //    BeginAnimation(OpacityProperty, anim);
+            //}
+
+            var hide = FindResource("HideWindow") as Storyboard;
+            if (hide != null)
             {
-                AlreadyFaded = true;
-                var anim = new DoubleAnimation(0, (Duration)TimeSpan.FromSeconds(1));
-                anim.Completed += new EventHandler(anim_Completed);
-                BeginAnimation(OpacityProperty, anim);
+                Double CurrentHeight = Height;
+                Double CurrentWidth = Width;
+
+                hide.Completed += (s, ea) => {
+
+                    Close();
+
+                };
+
+                hide.Begin(this, true);
             }
         }
 
@@ -52,13 +74,34 @@ namespace CloseMinimizeResize
         {
             //WindowStyle = WindowStyle.SingleBorderWindow;
             //WindowState = WindowState.Minimized;
-            if (!AlreadyFaded)
+
+
+            //if (!AlreadyFaded)
+            //{
+            //    AlreadyFaded = true;
+            //    var anim = new DoubleAnimation(0, (Duration)TimeSpan.FromSeconds(1));
+            //    anim.FillBehavior = FillBehavior.Stop;
+            //    anim.Completed += new EventHandler(minimizeCompleted);
+            //    this.BeginAnimation(UIElement.OpacityProperty, anim);
+            //}
+
+
+            var hide = FindResource("HideWindow") as Storyboard;
+            if (hide != null)
             {
-                AlreadyFaded = true;
-                var anim = new DoubleAnimation(0, (Duration)TimeSpan.FromSeconds(1));
-                anim.FillBehavior = FillBehavior.Stop;
-                anim.Completed += new EventHandler(minimizeCompleted);
-                this.BeginAnimation(UIElement.OpacityProperty, anim);
+                Double CurrentHeight = Height;
+                Double CurrentWidth = Width;
+
+                hide.Completed += (s, ea) => {
+
+                    WindowState = WindowState.Minimized;
+
+                    Application.Current.MainWindow.Height = CurrentHeight;
+                    Application.Current.MainWindow.Width = CurrentWidth;
+
+                    };
+
+                hide.Begin(this, true);
             }
         }
 

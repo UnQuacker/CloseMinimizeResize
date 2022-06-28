@@ -9,6 +9,31 @@
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent">
+    <Window.Resources>
+        <Storyboard x:Key="HideWindow">
+            <DoubleAnimation Duration="0:0:0.08" 
+                             Storyboard.TargetProperty="Height"
+                             From="450" 
+                             To="0" 
+                             AccelerationRatio="1"
+                             FillBehavior="Stop">
+            </DoubleAnimation>
+            <DoubleAnimation Duration="0:0:0.08" 
+                             Storyboard.TargetProperty="Width" 
+                             From="450" 
+                             To="0" 
+                             AccelerationRatio="1"
+                             FillBehavior="Stop">
+            </DoubleAnimation>
+            <DoubleAnimation Duration="0:0:0.08" 
+                             Storyboard.TargetProperty="Opacity" 
+                             From="0" 
+                             To="1" 
+                             AccelerationRatio="1"
+                             FillBehavior="Stop">
+            </DoubleAnimation>
+        </Storyboard>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
